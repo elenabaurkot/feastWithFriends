@@ -5,11 +5,15 @@ const routes = require('./routes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Connect Database
+connectDB();
+
+// Init Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 // Define Routes
 app.use(routes);
-
-// Connect Databse
-connectDB();
 
 app.get('/', (req, res) => res.send('API Running'));
 
