@@ -15,13 +15,11 @@ const UsersSchema = new Schema({
     type: String,
     required: true,
   },
-  avatar: {
-    type: String,
-  },
   date: {
     type: Date,
     default: Date.now,
   },
+  // could add profile picture?
 });
 
 const Users = mongoose.model('Users', UsersSchema);
