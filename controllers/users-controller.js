@@ -1,6 +1,8 @@
 const Users = require('../models/Users');
-const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
+const { validationResult } = require('express-validator');
 
 // register Users
 const registerUser = async (req, res) => {
@@ -30,7 +32,20 @@ const registerUser = async (req, res) => {
     // Save user
     await user.save();
     // Return JSON Web Token
-    res.send('Users route');
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
+    jwt.sign(
+      payload,
+      config.get('jwtSecret'),
+      { expiresIn: 3600 },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
   } catch (err) {
     console.log(err.message);
     res.status(500).send('Server error');
