@@ -22,5 +22,5 @@ const UsersSchema = new Schema({
   // could add profile picture?
 });
 
-const Users = mongoose.model('Users', UsersSchema);
+const Users = mongoose.model('user', UsersSchema);
 module.exports = Users;

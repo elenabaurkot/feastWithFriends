@@ -2,7 +2,8 @@ const Profile = require('../models/Profile');
 const Users = require('../models/Users');
 const { validationResult } = require('express-validator');
 
-const getProfile = async (req, res) => {
+// FIND USER PROFILE BASED ON ID
+const getCurrentProfile = async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.user.id,
@@ -19,7 +20,9 @@ const getProfile = async (req, res) => {
   }
 };
 
-// Create or update user profile
+
+
+// CREATE/UPDATE USER PROFILES
 const createUpdateProfile = async (req, res) => {
   const errors = validationResult(req);
   if(!errors.isEmpty()) {
@@ -71,6 +74,6 @@ const createUpdateProfile = async (req, res) => {
 }
 
 module.exports = {
-  getProfile,
+  getCurrentProfile,
   createUpdateProfile
 };
