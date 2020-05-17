@@ -71,9 +71,40 @@ const createUpdateProfile = async (req, res) => {
     console.error(err.message);
     res.status(500).send('Server Error'); 
   }
-}
+};
+
+// Get all profiles
+const getAllProfiles = async(req, res) => {
+  try {
+    const profiles = await Profile.find().populate('user', ['name', 'avatar']);
+    res.json(profiles);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+};
+
+// Get profile by ID
+const getProfileById = async(req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.params.user_id}).populate('user', ['name', 'avatar']);
+
+    if(!profile) {
+      return res.status(400).json({ msg: 'Profile not found'})
+    }
+    res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind == 'ObjectId') {
+      res.status(400).json({ msg: 'Profile not found'})
+    }
+    res.status(500).send('Server error');
+  }
+};
 
 module.exports = {
   getCurrentProfile,
-  createUpdateProfile
+  createUpdateProfile,
+  getAllProfiles,
+  getProfileById
 };

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const auth = require('../../middleware/auth');
-const { getCurrentProfile, createUpdateProfile} = require('../../controllers/profile-controller');
+const { getCurrentProfile, createUpdateProfile, getAllProfiles, getProfileById} = require('../../controllers/profile-controller');
 
 // @route       GET api/profile/me
 // @desc        Get current users profile
@@ -12,5 +12,14 @@ router.route('/me').get(auth, getCurrentProfile);
 // @access      Private
 router.route('/').post(auth, createUpdateProfile);
 
+// @route       GET api/profile
+// @desc        Get all profiles
+// @access      Public
+router.route('/').get(getAllProfiles);
+
+// @route       GET api/profile/user/:user_id
+// @desc        Get profile by user id
+// @access      Public
+router.route('/user/:user_id').get(getProfileById);
 
 module.exports = router;
