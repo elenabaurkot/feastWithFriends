@@ -67,10 +67,42 @@ const createUpdateRecipe = async (req, res) => {
       console.error(err.message);
       res.status(500).send('Server Error'); 
     }
-  }
+  };
+
+  // Get all recipes
+const getAllRecipes = async(req, res) => {
+    try {
+      const recipes = await Recipes.find().populate('user', ['name']);
+      res.json(recipes);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  };
+  
+  // Get profile by ID
+  const getRecipeById = async(req, res) => {
+    try {
+      const recipe = await Recipes.findOne({ user: req.params.user_id}).populate('user', ['name']);
+  
+      if(!recipe) {
+        return res.status(400).json({ msg: 'Recipe not found'})
+      }
+      res.json(recipe);
+    } catch (err) {
+      console.error(err.message);
+      if (err.kind == 'ObjectId') {
+        res.status(400).json({ msg: 'Recipe not found'})
+      }
+      res.status(500).send('Server error');
+    }
+  };
+  
 
 
   module.exports = {
     getRecipeBook,
-    createUpdateRecipe
+    createUpdateRecipe,
+    getAllRecipes,
+    getRecipeById
   };
