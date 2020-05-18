@@ -98,11 +98,24 @@ const getAllRecipes = async(req, res) => {
     }
   };
   
+  // Delete recipes
+const deleteRecipes = async(req, res) => {
+    try {
+      // Remove recipes
+      await Recipes.findOneAndRemove({ user: req.user.id });
+      
+      res.json({ msg: 'Recipe deleted'});
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  };
 
 
   module.exports = {
     getRecipeBook,
     createUpdateRecipe,
     getAllRecipes,
-    getRecipeById
+    getRecipeById,
+    deleteRecipes
   };

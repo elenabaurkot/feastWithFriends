@@ -1,6 +1,10 @@
 const router = require('express').Router(); 
 const auth = require('../../middleware/auth'); 
-const { getRecipeBook, createUpdateRecipe, getAllRecipes, getRecipeById } = require('../../controllers/recipes-controller');
+const { getRecipeBook, 
+        createUpdateRecipe, 
+        getAllRecipes, 
+        getRecipeById,
+        deleteRecipes } = require('../../controllers/recipes-controller');
 
 // @route       GET api/recipes/me
 // @desc        Get current user's recipes
@@ -21,5 +25,10 @@ router.route('/').get(getAllRecipes);
 // @desc        Get recipe by user id
 // @access      Public
 router.route('/user/:user_id').get(getRecipeById);
+
+// @route       DELETE api/recipes
+// @desc        Delete recipe
+// @access      Private
+router.route('/').delete(auth, deleteRecipes);
 
 module.exports = router;
