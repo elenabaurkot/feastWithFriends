@@ -22,7 +22,6 @@
 .navbar {
     position: sticky;
     z-index: 1;
-
     top: 0;
     opacity: 0.9; 
 }
