@@ -1,5 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 
 const CreateRecipe = props => {
     const [formData, setFormData] = useState({
@@ -7,7 +9,15 @@ const CreateRecipe = props => {
         category: '',
         ingredients: '',
         instructions: ''
-    }) = formData; 
+    }); 
+
+    const {
+        name,
+        category,
+        ingredients,
+        instructions
+    } = formData; 
+
 
 const onChange = e => 
     setFormData({...formData, [e.target.name]: e.target.value });
@@ -17,7 +27,9 @@ const onChange = e =>
     <Fragment>
         <form className="form">
             <div className="form-group">
-            <select name="category">
+            <select name="category"
+            value={category} 
+            onChange={e => onChange(e)}>
                 <option value="0">* Select Recipe Category</option>
                 <option value="Breakfast">Breakfast</option>
                 <option value="Lunch">Lunch</option>

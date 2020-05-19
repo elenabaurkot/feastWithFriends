@@ -27,6 +27,9 @@ const Dashboard = ({
                 <Link to='/create-profile' className='btn btn-primary my-1'>
                     Edit Profile
                 </Link>
+                <Link to='/create-recipe' className='btn btn-primary my-1'>
+                    Create Recipe
+                </Link>
             </Fragment>
         </Fragment>
 }

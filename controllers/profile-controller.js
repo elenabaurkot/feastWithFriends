@@ -34,7 +34,6 @@ const createUpdateProfile = async (req, res) => {
     bio,
     youtube,
     facebook,
-    twitter,
     instagram,
   } = req.body;
 
@@ -47,7 +46,6 @@ const createUpdateProfile = async (req, res) => {
   // Build social object
   profileFields.social = {}; 
   if (youtube) profileFields.social.youtube = youtube; 
-  if (twitter) profileFields.social.twitter = twitter; 
   if (facebook) profileFields.social.facebook = facebook; 
   if (instagram) profileFields.social.instagram = instagram; 
 
