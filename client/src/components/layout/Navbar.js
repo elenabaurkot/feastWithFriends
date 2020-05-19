@@ -10,7 +10,7 @@ const Navbar = () => {
             <Link to= '/' className='noDec oLink'>
                 <h1 id='navHeader'>
                     <i class="fas fa-pepper-hot"></i>&nbsp; 
-                    Feast With Friends
+                    Feastify
                 </h1>
             </Link>
         </h1>

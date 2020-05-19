@@ -14,12 +14,44 @@
     height: 100% !important;
 }
 .pic-text{
-    background-color: rgb(247, 247, 247, .85);
+    background-color: rgb(247, 247, 247, .87);
     width: 75%;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
-    padding-top: 20px;
-    padding-bottom: 50px;
-    height: 75% !important;
+    padding: 6% 8% 6% 8%;
+    border-radius: 2px;
+    min-height: fit-content !important;
+}
+#welcome-header{
+    letter-spacing: 1.5px;
+}
+#welcome-text{
+    font-size: 22px;
+    padding: 10px;
+    letter-spacing: 1px;
+}
+.welcome-link{
+    color: rgb(205, 108, 5);
+}
+.welcome-link:hover {
+    color: rgb(90, 89, 89);
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    font-size: 23px;
+}
+.welcome-link{
+    padding: 2rem;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+#bold-link{
+    font-weight: bold !important;
+}
+#welcome-pepper{
+    color: rgb(205, 108, 5);
+    font-size: 50px;
+    padding: 20px;
+    margin-right: 8%;
 }
