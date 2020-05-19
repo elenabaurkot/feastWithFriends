@@ -1,1 +1,1 @@
-# feastWithFriends
+# Feastify
