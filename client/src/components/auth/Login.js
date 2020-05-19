@@ -3,6 +3,7 @@ import { Link, Redirect } from  'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 import { login } from '../../actions/auth';
+import '../styles/loginRegister.css';
 
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
@@ -26,10 +27,11 @@ const Login = ({ login, isAuthenticated }) => {
     }
 
     return <Fragment>
-        <h1>Sign In</h1>
+    <section className="form-background">
         <form className='form' onSubmit={e => onSubmit(e)}>
+        <h1 className='text-dark sign-header'>Sign In</h1>
             <div className="form-group">
-                <input 
+                <input className='input-rounded'
                     type="email" 
                     placeholder="Email Address" 
                     name="email" 
@@ -48,11 +50,12 @@ const Login = ({ login, isAuthenticated }) => {
                     minLength="6"
                 />
             </div>
-            <input type="submit" className="btn btn-primary" value="Login" />
-        </form>
+            <input type="submit" className="btn" value="Login" />
         <p>
-            Don't have an account? <Link to='/register'>Sign Up</Link>
+            Don't have an account? <Link to='/register' className='sign-link'>Sign Up</Link>
         </p>
+        </form>
+    </section>
     </Fragment>
 }
 

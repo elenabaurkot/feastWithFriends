@@ -3,8 +3,8 @@ import { Link, Redirect } from  'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
-import PropTypes from 'prop-types'
-
+import PropTypes from 'prop-types';
+import '../styles/loginRegister.css';
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
     const [formData, setFormData] = useState({
@@ -34,8 +34,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     }
 
     return <Fragment>
-        <h1>Register</h1>
+    <section className="form-background">
         <form className='form' onSubmit={e => onSubmit(e)}>
+        <h1 className='text-dark sign-header'>Register</h1>
             <div className='form-group'>
                 <input 
                     type='text'
@@ -43,7 +44,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     name='name'
                     value={name}
                     onChange={e => onChange(e)}
-                    // required
+                    required
                 />
             </div>
             <div className="form-group">
@@ -53,7 +54,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     name="email" 
                     value={email} 
                     onChange={e => onChange(e)}
-                    // required 
+                    required 
                 />
             </div>
             <div className="form-group">
@@ -63,7 +64,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     name="password"
                     value={password} 
                     onChange={e => onChange(e)}
-                    // minLength="6"
+                    minLength="6"
                 />
             </div>
             <div className="form-group">
@@ -73,14 +74,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     name="password2"
                     value={password2} 
                     onChange={e => onChange(e)}
-                    // minLength="6"
+                    minLength="6"
                 />
             </div>
-            <input type="submit" className="btn btn-primary" value="Register" />
-        </form>
+            <input type="submit" className="btn" value="Register" />
         <p className="my-1">
-            Already have an account? <Link to='/login'>Sign In</Link>
+            Already have an account? <Link to='/login' className='sign-link'>Sign In</Link>
         </p>
+        </form>
+    </section>
     </Fragment>
 }
 
