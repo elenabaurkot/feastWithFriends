@@ -1,0 +1,25 @@
+/* Landing Page */
+.landing {
+    background: url('./bg-photo.jpeg') no-repeat center/cover;
+    position: absolute;
+    overflow: auto;
+    height: 100% !important;
+    width: 100%;
+    top: 0;
+}
+.text {
+    margin-top: 8rem;
+    margin-right: 5rem;
+    margin-left: 5rem;
+    height: 100% !important;
+}
+.pic-text{
+    background-color: rgb(247, 247, 247, .85);
+    width: 75%;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    height: 75% !important;
+}
