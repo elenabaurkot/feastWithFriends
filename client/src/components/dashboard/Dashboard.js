@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getCurrentProfile } from '../../actions/profile';
+import GetMyRecipeBook from '../recipes/GetMyRecipeBook';
 
 const Dashboard = ({ 
     getCurrentProfile, 
@@ -30,6 +31,7 @@ const Dashboard = ({
                 <Link to='/create-recipe' className='btn btn-primary my-1'>
                     Create Recipe
                 </Link>
+                <GetMyRecipeBook />
             </Fragment>
         </Fragment>
 }

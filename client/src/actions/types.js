@@ -13,5 +13,6 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';
 export const GET_RECIPES = 'GET_RECIPES';
+export const GET_MY_RECIPES = 'GET_MY_RECIPES';
 export const RECIPES_ERROR = 'RECIPES_ERROR';
 export const ADD_RECIPE = 'ADD_RECIPE';

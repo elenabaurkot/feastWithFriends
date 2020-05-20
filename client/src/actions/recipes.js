@@ -2,7 +2,8 @@ import axios from 'axios';
 import { setAlert } from './alert';
 import {
     GET_RECIPES,
-    RECIPES_ERROR
+    GET_MY_RECIPES,
+    RECIPES_ERROR,
 } from './types';
 
 // Get recipes
@@ -23,26 +24,22 @@ export const getRecipes = () => async dispatch => {
 };
 
 
+// Get current user's recipes
+export const getMyRecipeBook = () => async dispatch => {
+    try {
+        const res = await axios.get('/api/recipes/me');
 
-
-
-// // Get current user's recipes
-// export const getMyRecipeBook = () => async dispatch => {
-//     try {
-//         const res = await axios.get('/api/recipes/me');
-
-//         dispatch({
-//             type: GET_MY_RECIPES,
-//             payload: res.data
-//         })
-//     } catch (err) {
-//         dispatch({
-//             type: RECIPE_ERROR,
-//             payload: { msg: err.response.statusText, status: err.response.status }
-//         });
-//     }
-// };
-
+        dispatch({
+            type: GET_MY_RECIPES,
+            payload: res.data
+        })
+    } catch (err) {
+        dispatch({
+            type: RECIPES_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
 
 
 // Add recipe
