@@ -21,7 +21,6 @@ const getCurrentProfile = async (req, res) => {
 };
 
 
-
 // CREATE/UPDATE USER PROFILES
 const createUpdateProfile = async (req, res) => {
   const errors = validationResult(req);
@@ -114,65 +113,10 @@ const deleteProfile = async(req, res) => {
   }
 };
 
-// Add Recipe
-const addRecipe = async(req, res) => {
-  const errors = validationResult(req);
-  if(!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-
-  const {
-    name,
-    category,
-    instructions,
-    ingredients
-  } = req.body
-
-  const newRecipe = {
-    name,
-    category,
-    instructions,
-    ingredients
-  }
-
-  try {
-    const profile = await Profile.findOne({ user: req.user.id });
-
-    profile.recipes.unshift(newRecipe);
-
-    await profile.save()
-
-    res.json(profile);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error'); 
-  }
-}
-
-// Delete Recipe
-const deleteRecipe = async(req, res) => {
-  try {
-    // get profile by user id
-    const profile = await Profile.findOne({ user: req.user.id });
-    // get remove index
-    const removeIndex = profile.recipes.map(item => item.id).indexOf(req.params.recipe_id);
-    
-    profile.recipes.splice(removeIndex, 1);
-
-    await profile.save(); 
-    res.json(profile);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error'); 
-  }
-}
-
 module.exports = {
   getCurrentProfile,
   createUpdateProfile,
   getAllProfiles,
   getProfileById,
-  deleteProfile,
-  addRecipe,
-  deleteRecipe
+  deleteProfile
 };

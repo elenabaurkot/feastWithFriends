@@ -36,6 +36,7 @@ const onChange = e =>
                 <option value="Dinner">Dinner</option>
                 <option value="Desserts">Desserts</option>
                 <option value="Healthy Foods">Healthy Foods</option>
+                <option value="Drinks">Drinks</option>
                 <option value="Other">Other</option>
             </select>
             </div>
