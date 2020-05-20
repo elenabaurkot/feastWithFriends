@@ -48,6 +48,7 @@ const Login = ({ login, isAuthenticated }) => {
                     value={password} 
                     onChange={e => onChange(e)}
                     minLength="6"
+                    required
                 />
             </div>
             <input type="submit" className="btn" value="Login" />

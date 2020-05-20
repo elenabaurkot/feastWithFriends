@@ -41,9 +41,5 @@ export const createProfile = (
         payload: res.data
     });
 
-    dispatch(setAlert('Profile Updated'));
-        if(!edit) {
-        history.push('/dashboard');
-
-    }
+    dispatch(setAlert('Profile Updated', 'success'));
 };
