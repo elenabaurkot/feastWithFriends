@@ -18,7 +18,6 @@ const GetMyRecipeBook = ({
     <Spinner />
         : 
     <Fragment>
-        <h1 className='large text-dark'>Recipes</h1>
         <div className='recipes'>
             {recipes.map(recipe => (
                 <RecipeItem key={recipes._id} recipes={recipe} />

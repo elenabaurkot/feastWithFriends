@@ -1,0 +1,30 @@
+.cap{
+    text-transform: capitalize;
+}
+.bg-light{
+    display: inline-block;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid orange;
+    height: 500px;
+    width: 40%;
+    overflow: hidden;
+    margin-left: 5%;
+    margin-bottom: 5%;
+}
+.center{
+    justify-content: center;
+    text-align: center;
+}
+.listing{
+    list-style: none;
+}
+.head{
+    padding-top: 40px;
+}
+.recipe-title{
+    padding-top: 25px;
+    padding-bottom: 12px;
+    text-transform: capitalize;
+    text-decoration: underline;
+}

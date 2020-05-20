@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
 import { connect } from "react-redux";
+import './recipeStyles.css';
 
 const RecipeItem = ({ auth,
   recipes: {
@@ -18,29 +19,35 @@ const RecipeItem = ({ auth,
   },
 }) => {
   return (
-  <div>
-    <h4>{name}</h4>
-    <p>Posted by {user.name} on <Moment format='YYYY/MM/DD'>{date}</Moment></p>
-    <p>{category}</p>
+  <div class='bg-light'>
+    <h3 className='recipe-title'>{name}</h3>
+    <h6>Posted by {user.name} on <Moment format='YYYY/MM/DD'>{date}</Moment></h6>
+    <h5 className='cap'>Category: {category}</h5>
     <div className='skills'>
-    <h5>Instructions</h5>
+    <h4>Instructions</h4>
     <div class='instructions'>
+      <ul className='listing'>
         {instructions.map((instruction, index) => (
+          <li>
             <div key={index} className='p-1'>
-            {index + 1}{instruction}
+            {instruction}
             </div>
+          </li>
         ))}
+      </ul>
     </div>
-    <h5>Ingredients</h5>
+    <h4>Ingredients</h4>
     <div class='ingredients'>
+      <ul className='listing'>
         {ingredients.map((ingredient, index) => (
+          <li>
             <div key={index} className='p-1'>
-            {index + 1}{ingredient}
+              {ingredient}
             </div>
+          </li>
         ))}
+      </ul>
     </div>
-        <span>{likes.length}</span>
-        <span>{comments.length}</span>
   </div>
   </div>
   );

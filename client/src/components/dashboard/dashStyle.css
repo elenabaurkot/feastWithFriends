@@ -18,27 +18,26 @@
 .welcome{ 
     font-size: 22px;
 }
-#dash-recipes {
-    padding-left: 250px !important;
-    padding: 0;
-    max-width: 100%;
-}
 .header{
-    display: inline block;
-    margin-left: 350px;
+    text-align: center;
+    margin-left: 300px;
     margin-top: 5%;
+    padding-bottom: 20px;
 }
 .btn{
-    width: 75%;
+    width: 200px;
     margin-right: auto;
     margin-left: auto;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-weight: bold;
 }
 i{
-    display: flex;
     font-size: 40px;
     bottom: 0;
+}
+.dash-row{
+    margin-left: 285px;
+    text-align: center;
 }

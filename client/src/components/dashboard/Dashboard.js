@@ -28,18 +28,19 @@ const Dashboard = ({
                     </span>
             </p>
         
-            <Link to='/create-profile' className='btn'>
+            <Link to='/create-profile' className='btn dash-btn'>
                 Edit Profile
             </Link>
-            <Link to='/create-recipe' className='btn'>
+            <Link to='/create-recipe' className='btn dash-btn'>
                 Create Recipe
             </Link>
         </div>
         {/* Main Content */}
         <div class='header'>
             <h1 className='text-dark'>Dashboard</h1>
+            <h4>Your Recipes!</h4>
         </div>
-        <div id='dash-recipes'>
+        <div className='dash-row'>
             <GetMyRecipeBook />
         </div>
         </Fragment>

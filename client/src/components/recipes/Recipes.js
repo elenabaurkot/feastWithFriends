@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getRecipes } from '../../actions/recipes';
 import Spinner from '../layout/Spinner';
 import RecipeItem from './RecipeItem';
+import './recipeStyles.css';
 
 const Recipes = ({ 
     getRecipes, 
@@ -18,7 +19,8 @@ const Recipes = ({
     <Spinner />
         : 
     <Fragment>
-        <h1 className='large text-dark'>Recipes</h1>
+    <div className='center'>
+        <h1 className='large text-dark head'>Recipes</h1>
         <p className='lead'>
             Check out other Feastify users' creations!
         </p>
@@ -27,6 +29,8 @@ const Recipes = ({
                 <RecipeItem key={recipes._id} recipes={recipe} />
             ))}
         </div>
+    </div>
+    
     </Fragment>
     )
 }
