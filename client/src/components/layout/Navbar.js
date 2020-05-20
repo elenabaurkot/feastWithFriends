@@ -11,7 +11,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
         <ul>
             <li>
-                <Link to='/profiles' className='noDec oLink navLink'>
+                <Link to='/recipes' className='noDec oLink navLink'>
                     Recipes
                 </Link>
             </li>
@@ -37,7 +37,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     const guestLinks = (
         <ul>
             <li>
-                <Link to='/profiles' className='noDec oLink navLink'>
+                <Link to='/recipes' className='noDec oLink navLink'>
                     Recipes
                 </Link>
             </li>
