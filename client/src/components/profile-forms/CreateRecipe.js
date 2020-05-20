@@ -31,8 +31,9 @@ const onSubmit = e => {
 
     return (
     <Fragment>
-        <form className="form" onSubmit={e => onSubmit(e)}>
+        <form className="form" id='prof-form-1' onSubmit={e => onSubmit(e)}>
             <div className="form-group">
+            <h2 className='mb-4 pt-5'>Add A Recipe</h2>
             <select name="category"
             value={category} 
             onChange={e => onChange(e)}>
@@ -76,7 +77,7 @@ const onSubmit = e => {
                     required 
                 />
             </div>
-        <input type="submit" className="btn btn-primary my-1" />
+        <input type="submit" className="btn my-1" />
         <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
       </form>
     </Fragment> 

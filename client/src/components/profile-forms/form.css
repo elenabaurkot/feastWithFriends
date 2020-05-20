@@ -1,0 +1,18 @@
+.btn{
+    margin-right: 3px;
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+
+input{
+    padding: 5px;
+    width: 400px;
+    margin-left: 5px;
+}
+
+#prof-form{
+    border: 1px solid grey;
+}
+#prof-form-1{
+    border: 1px solid grey;
+}

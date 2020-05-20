@@ -7,6 +7,7 @@ import ProfileTop from './ProfileTop';
 import { getProfileById } from '../../actions/profile';
 import GetRecipesByUser from '../recipes/GetRecipesByUser';
 import { getRecipesByUserId } from '../../actions/recipes';
+import './profile.css';
 
 const Profile = ({ 
     getProfileById, 
@@ -24,6 +25,7 @@ const Profile = ({
             <Spinner /> 
                 : 
             <Fragment>
+            <div className="center">
                 <Link to='/profiles' className='btn btn-light'>
                     View All Profiles
                 </Link>
@@ -34,12 +36,13 @@ const Profile = ({
                     Edit Profile
                 </Link>
                 )}
-                <div class='profile-grid my-1'>
+                <div class='profile-grid my-1 center'>
                     <ProfileTop profile={profile}/> 
                 </div>
-                <div>
+                <div className='center mt-4'>
                     <GetRecipesByUser />
                 </div>
+            </div>
             </Fragment>
         }
     </Fragment>

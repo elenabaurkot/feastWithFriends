@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './profiles.css';
 
 const ProfileItem = ({ profile: {
     user: { _id, name },

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner'; 
 import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
+import './profiles.css';
 
 const Profiles = ({ getProfiles, profile: {profiles, loading}}) => {
     useEffect(() => {
@@ -14,8 +15,8 @@ const Profiles = ({ getProfiles, profile: {profiles, loading}}) => {
         <Spinner /> 
             : 
         <Fragment>
-            <h1 className='large text-primary'>Feastify Users</h1>
-            <p className='lead'>
+            <h1 className='large text-dark center mt-5'>Feastify Users</h1>
+            <p className='lead center'>
             <i class="fas fa-glass-cheers"></i>
                 Connect With Other Feastify Users!
             </p>

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import './profile.css';
 
 const ProfileTop = ({
   profile: {
@@ -10,7 +11,7 @@ const ProfileTop = ({
   },
 }) => {
   return (
-    <div className="profile-top bg-primary p-2">
+    <div className="profile-top bg-secondary p-2 center">
       <img
         className="round-img my-1"
         src="https://res.cloudinary.com/dsxuuory9/image/upload/v1589981524/random/propic_p4iyq1.png"

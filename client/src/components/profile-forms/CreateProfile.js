@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile, deleteAccount } from '../../actions/profile';
+import './form.css';
 
 const initialState = {
   bio: '',
@@ -54,9 +55,10 @@ const CreateProfile = ({
 
     return (
     <Fragment>
-        <form className="form" onSubmit={e => onSubmit(e)}>
+        <form className="form" id="prof-form" onSubmit={e => onSubmit(e)}>
         
         <div className="form-group">
+          <h2 className='mb-4 pt-5'>Update Your Profile</h2>
           <textarea 
             placeholder="A short bio of yourself" 
             name="bio"
@@ -111,11 +113,11 @@ const CreateProfile = ({
             onChange={e => onChange(e)}
           />
         </div>
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
+        <input type="submit" className="btn my-1" />
+        <Link className="btn my-1" to="/dashboard">Go Back</Link>
         {/* Delete account button */}
-        <div className='my-2'>
-          <button className='btn btn-danger' onClick={() => deleteAccount()}>
+        <div className='my-1'>
+          <button className='btn' onClick={() => deleteAccount()}>
             <i className='fas fa-user'></i>&nbsp;Delete My Account
           </button>
         </div>
