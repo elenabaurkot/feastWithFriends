@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getCurrentProfile } from '../../actions/profile';
 import GetMyRecipeBook from '../recipes/GetMyRecipeBook';
+import './dashStyle.css';
 
 const Dashboard = ({ 
     getCurrentProfile, 
@@ -18,21 +19,29 @@ const Dashboard = ({
         <Spinner /> 
             : 
         <Fragment>
-            <h1 className='large text-dark'>Dashboard</h1>
+        <div className='sideNav'>
             <p className='text-dark'>
-                <i className='fas fa-user'>
-                    Welcome { user && user.name}
-                </i>
+                    <span class='welcome'>
+                    <i className='fas fa-user'></i>
+                            <br/>
+                        { user && user.name}
+                    </span>
             </p>
-            <Fragment>
-                <Link to='/create-profile' className='btn btn-primary my-1'>
-                    Edit Profile
-                </Link>
-                <Link to='/create-recipe' className='btn btn-primary my-1'>
-                    Create Recipe
-                </Link>
-                <GetMyRecipeBook />
-            </Fragment>
+        
+            <Link to='/create-profile' className='btn'>
+                Edit Profile
+            </Link>
+            <Link to='/create-recipe' className='btn'>
+                Create Recipe
+            </Link>
+        </div>
+        {/* Main Content */}
+        <div class='header'>
+            <h1 className='text-dark'>Dashboard</h1>
+        </div>
+        <div id='dash-recipes'>
+            <GetMyRecipeBook />
+        </div>
         </Fragment>
 }
 

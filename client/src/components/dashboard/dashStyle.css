@@ -1,0 +1,44 @@
+.sideNav {
+    background-color: rgb(255, 245, 234);
+        display: flex;
+        width: 250px;
+        height: 100% !important;
+        flex-direction: column;
+        text-align: center;
+        border-right: 3px solid rgb(48, 48, 48);
+        border-bottom: none !important;
+        font-family: 'Ropa Sans', sans-serif;
+        letter-spacing: 4px;
+        line-height: 60px;
+        position: fixed;
+        padding-top: 7%;
+        overflow: scroll;
+        font-size: 30px !important;
+}
+.welcome{ 
+    font-size: 22px;
+}
+#dash-recipes {
+    padding-left: 250px !important;
+    padding: 0;
+    max-width: 100%;
+}
+.header{
+    display: inline block;
+    margin-left: 350px;
+    margin-top: 5%;
+}
+.btn{
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+i{
+    display: flex;
+    font-size: 40px;
+    bottom: 0;
+}
