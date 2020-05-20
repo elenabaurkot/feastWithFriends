@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { createProfile, getCurrentProfile } from '../../actions/profile';
+import { createProfile, getCurrentProfile, deleteAccount } from '../../actions/profile';
 
 const initialState = {
   bio: '',
@@ -16,6 +16,7 @@ const CreateProfile = ({
   profile: { profile, loading },
   createProfile, 
   getCurrentProfile,
+  deleteAccount,
   history 
 }) => {
     const [formData, setFormData] = useState(initialState); 
@@ -48,7 +49,7 @@ const CreateProfile = ({
     const onSubmit = e => {
       e.preventDefault();
       createProfile(formData, history, profile ? true : false);
-      history.push('/dashboard');
+      // history.push('/dashboard');
     }
 
     return (
@@ -112,6 +113,12 @@ const CreateProfile = ({
         </div>
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
+        {/* Delete account button */}
+        <div className='my-2'>
+          <button className='btn btn-danger' onClick={() => deleteAccount()}>
+            <i className='fas fa-user'></i>&nbsp;Delete My Account
+          </button>
+        </div>
       </form>
     </Fragment> 
     );
@@ -120,6 +127,7 @@ const CreateProfile = ({
 CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
 
@@ -129,6 +137,6 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps, 
-  {createProfile, getCurrentProfile}
+  {createProfile, getCurrentProfile, deleteAccount}
   )(withRouter(CreateProfile));
 

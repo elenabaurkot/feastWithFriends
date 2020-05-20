@@ -1,5 +1,6 @@
 const Profile = require('../models/Profile');
 const Users = require('../models/Users');
+const Recipes = require('../models/Recipes');
 const { validationResult } = require('express-validator');
 
 // FIND USER PROFILE BASED ON ID
@@ -99,9 +100,11 @@ const getProfileById = async(req, res) => {
   }
 };
 
-// Delete profile, user & posts
+// Delete profile, user & recipes
 const deleteProfile = async(req, res) => {
   try {
+    // Remove user recipes
+    await Recipes.deleteMany({ user: req.user.id })
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
     // Remove user
