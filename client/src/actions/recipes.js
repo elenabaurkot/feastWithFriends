@@ -4,6 +4,7 @@ import {
     GET_RECIPES,
     GET_MY_RECIPES,
     RECIPES_ERROR,
+    GET_RECIPES_BY_USER
 } from './types';
 
 // Get recipes
@@ -40,6 +41,24 @@ export const getMyRecipeBook = () => async dispatch => {
         });
     }
 };
+
+// Get recipes by User ID
+export const getRecipesByUserId = userId => async dispatch => {
+    try {
+        const res = await axios.get(`/api/recipes/user/${userId}`);
+
+        dispatch({
+            type: GET_RECIPES_BY_USER,
+            payload: res.data
+        })
+    } catch (err) {
+        dispatch({
+            type: RECIPES_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
 
 
 // Add recipe

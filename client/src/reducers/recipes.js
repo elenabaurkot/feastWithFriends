@@ -1,7 +1,8 @@
 import {
     GET_RECIPES,
     RECIPES_ERROR,
-    GET_MY_RECIPES
+    GET_MY_RECIPES,
+    GET_RECIPES_BY_USER
 } from '../actions/types';
 
 const initialState = {
@@ -17,6 +18,7 @@ export default function(state = initialState, action){
     switch(type) {
         case GET_RECIPES:
         case GET_MY_RECIPES: 
+        case GET_RECIPES_BY_USER:
             return {
                 ...state,
                 recipes: payload,

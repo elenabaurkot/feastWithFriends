@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import ProfileTop from './ProfileTop';
-import { getProfileById, getProfiles } from '../../actions/profile';
+import { getProfileById } from '../../actions/profile';
+import GetRecipesByUser from '../recipes/GetRecipesByUser';
+import { getRecipesByUserId } from '../../actions/recipes';
 
 const Profile = ({ 
     getProfileById, 
@@ -14,7 +16,7 @@ const Profile = ({
 }) => {
     useEffect(() => {
         getProfileById(match.params.id);
-    }, [getProfileById, match.params.id]);
+    }, [getProfileById, match.params.id, getRecipesByUserId]);
     
     return (
     <Fragment>
@@ -34,6 +36,9 @@ const Profile = ({
                 )}
                 <div class='profile-grid my-1'>
                     <ProfileTop profile={profile}/> 
+                </div>
+                <div>
+                    <GetRecipesByUser />
                 </div>
             </Fragment>
         }

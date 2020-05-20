@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner'; 
 import ProfileItem from './ProfileItem';
 import { getProfiles } from '../../actions/profile';
-import GetMyRecipeBook, { getMyRecipeBook} from '../recipes/GetMyRecipeBook';
 
 const Profiles = ({ getProfiles, profile: {profiles, loading}}) => {
     useEffect(() => {
@@ -27,7 +26,6 @@ const Profiles = ({ getProfiles, profile: {profiles, loading}}) => {
                     ))
                 ) : <h4>No profiles found</h4>}
             </div>
-            <GetMyRecipeBook />
         </Fragment>}
     </Fragment>
 }

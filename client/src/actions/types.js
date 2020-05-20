@@ -16,3 +16,4 @@ export const GET_RECIPES = 'GET_RECIPES';
 export const GET_MY_RECIPES = 'GET_MY_RECIPES';
 export const RECIPES_ERROR = 'RECIPES_ERROR';
 export const ADD_RECIPE = 'ADD_RECIPE';
+export const GET_RECIPES_BY_USER = 'GET_RECIPES_BY_USER';
