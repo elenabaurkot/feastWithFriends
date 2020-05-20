@@ -1,9 +1,10 @@
 import React, { useState, Fragment } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { addRecipe } from '../../actions/recipes';
 
-
-const CreateRecipe = props => {
+const CreateRecipe = ({ addRecipe, history }) => {
     const [formData, setFormData] = useState({
         name: '',
         category: '',
@@ -22,10 +23,15 @@ const CreateRecipe = props => {
 const onChange = e => 
     setFormData({...formData, [e.target.name]: e.target.value });
 
+const onSubmit = e => {
+    e.preventDefault();
+    addRecipe(formData, history);
+}
+
 
     return (
     <Fragment>
-        <form className="form">
+        <form className="form" onSubmit={e => onSubmit(e)}>
             <div className="form-group">
             <select name="category"
             value={category} 
@@ -77,8 +83,12 @@ const onChange = e =>
     )
 }
 
+
 CreateRecipe.propTypes = {
-
-}
-
-export default CreateRecipe
+    addRecipe: PropTypes.func.isRequired,
+};
+  
+  
+export default connect(null, {addRecipe})(withRouter(CreateRecipe));
+  
+  
