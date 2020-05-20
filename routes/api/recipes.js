@@ -5,7 +5,11 @@ const { getMyRecipeBook,
         getAllRecipes, 
         getRecipeByUserId,
         getRecipeById,
-        deleteRecipeById } = require('../../controllers/recipes-controller');
+        deleteRecipeById,
+        likeRecipe,
+        unlikeRecipe,
+        commentOnRecipe,
+        deleteRecipeComment } = require('../../controllers/recipes-controller');
 const { check } = require('express-validator');
 
 // @route       GET api/recipes/me
@@ -50,6 +54,32 @@ router.route('/recipe').put(
 // @desc        Delete a recipe
 // @access      Private
 router.route('/:id').delete(auth, deleteRecipeById);
+
+// @route       POST api/recipes/like/:id
+// @desc        Like a recipe
+// @access      Private
+router.route('/like/:id').put(auth, likeRecipe);
+
+// @route       POST api/recipes/unlike/:id
+// @desc        Unlike a recipe
+// @access      Private
+router.route('/unlike/:id').put(auth, unlikeRecipe);
+
+// @route       POST api/recipes/comment/:id
+// @desc        Comment on a recipe
+// @access      Private
+router.route('/comment/:id').post(
+    [auth, [
+        check('text', 'Text is required').not().isEmpty()
+    ]],
+    commentOnRecipe
+);
+
+// @route       DELETE api/recipes/comment/:id/:comment_id
+// @desc        Delete a comment from recipe
+// @access      Private
+router.route('/comment/:id/:comment_id').delete(auth, deleteRecipeComment);
+
 
 
 

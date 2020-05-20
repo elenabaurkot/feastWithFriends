@@ -131,6 +131,104 @@ const deleteRecipeById = async(req, res) => {
 }
 
 
+// Like a recipe
+const likeRecipe = async(req, res) => {
+  try {
+      const recipe = await Recipes.findById(req.params.id);
+
+      // check if recipe has already been liked by this user
+      if(recipe.likes.filter(like => like.user.toString() === req.user.id).length > 0) {
+          return res.status(400).json({ msg: 'Recipe already liked' })
+      }
+      recipe.likes.unshift({ user: req.user.id });
+
+      await recipe.save(); 
+      res.json(recipe.likes);
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error')
+  }
+}
+
+// Unlike a recipe
+const unlikeRecipe = async(req, res) => {
+  try {
+      const recipe = await Recipes.findById(req.params.id);
+
+      // check if recipe has already been liked by this user
+      if(recipe.likes.filter(like => like.user.toString() === req.user.id).length === 0) {
+          return res.status(400).json({ msg: 'recipe has not yet been liked' })
+      }
+      // Get remove index
+      const removeIndex = recipe.likes.map(like => like.user.toString()).indexOf(req.user.id);
+      recipe.likes.splice(removeIndex, 1);
+
+      await recipe.save(); 
+      res.json(recipe.likes);
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error')
+  }
+};
+
+// Comment on a recipe
+const commentOnRecipe = async(req, res) => {
+  const errors = validationResult(req); 
+  if(!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+  }
+
+  try {   
+      const user = await Users.findById(req.user.id).select('-password'); 
+      const recipe = await Recipes.findById(req.params.id);
+
+      const newComment = {
+          text: req.body.text,
+          name: user.name,
+          user: req.user.id
+      };
+
+      recipe.comments.unshift(newComment);
+
+      await recipe.save();
+
+      res.json(recipe.comments); 
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+  }
+};
+
+
+// Delete comment
+const deleteRecipeComment = async(req, res) => {
+  try {
+      const recipe = await Recipes.findById(req.params.id);
+
+      // Pull out comment
+      const comment = recipe.comments.find(comment => comment.id === req.params.comment_id);
+
+      // Make sure comment exists
+      if(!comment) {
+          return res.status(404).json({ msg: 'Comment does not exist' });
+      }
+
+      // Make sure user deleting comment is the one who created it
+      if(comment.user.toString() !== req.user.id) {
+          return res.status(401).json({ msg: 'User not authorized' });
+      }
+
+      // Get remove index
+      const removeIndex = recipe.comments.map(comment => comment.user.toString()).indexOf(req.user.id);
+      recipe.comments.splice(removeIndex, 1);
+
+      await recipe.save(); 
+      res.json(recipe.comments);
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+  }
+}
 
 
   module.exports = {
@@ -139,37 +237,9 @@ const deleteRecipeById = async(req, res) => {
     getAllRecipes,
     getRecipeByUserId,
     getRecipeById,
-    deleteRecipeById
+    deleteRecipeById,
+    likeRecipe,
+    unlikeRecipe,
+    commentOnRecipe,
+    deleteRecipeComment
   };
-
-//     // Delete recipes
-// const deleteRecipeById = async(req, res) => {
-//   try {
-//     // Remove recipes
-//     await Recipes.findOneAndRemove({ user: req.user.id });
-    
-//     res.json({ msg: 'Recipe deleted'});
-//   } catch (err) {
-//     console.error(err.message);
-//     res.status(500).send('Server error');
-//   }
-// };
-
-
-// // Delete Recipe
-// const deleteRecipeById = async(req, res) => {
-// try {
-//   // get profile by user id
-//   const recipes = await Recipes.findOne({ user: req.user.id });
-//   // get remove index
-//   const removeIndex = recipes.recipes.map(item => item.id).indexOf(req.params.recipe_id);
-  
-//   recipes.recipes.splice(removeIndex, 1);
-
-//   await recipes.save(); 
-//   res.json(recipes);
-// } catch (err) {
-//   console.error(err.message);
-//   res.status(500).send('Server Error'); 
-// }
-// }
