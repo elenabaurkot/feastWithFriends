@@ -1,30 +1,11 @@
-import axios from 'axios'; 
+import axios from 'axios';
 import { setAlert } from './alert';
-
 import {
-    GET_MY_RECIPES,
     GET_RECIPES,
-    RECIPE_ERROR
+    RECIPES_ERROR
 } from './types';
 
-// Get current user's recipes
-export const getMyRecipeBook = () => async dispatch => {
-    try {
-        const res = await axios.get('/api/recipes/me');
-
-        dispatch({
-            type: GET_MY_RECIPES,
-            payload: res.data
-        })
-    } catch (err) {
-        dispatch({
-            type: RECIPE_ERROR,
-            payload: { msg: err.response.statusText, status: err.response.status }
-        });
-    }
-};
-
-// Get all profiles
+// Get recipes
 export const getRecipes = () => async dispatch => {
     try {
         const res = await axios.get('/api/recipes');
@@ -35,11 +16,34 @@ export const getRecipes = () => async dispatch => {
         })
     } catch (err) {
         dispatch({
-            type: RECIPE_ERROR,
+            type: RECIPES_ERROR,
             payload: { msg: err.response.statusText, status: err.response.status }
         });
     }
 };
+
+
+
+
+
+// // Get current user's recipes
+// export const getMyRecipeBook = () => async dispatch => {
+//     try {
+//         const res = await axios.get('/api/recipes/me');
+
+//         dispatch({
+//             type: GET_MY_RECIPES,
+//             payload: res.data
+//         })
+//     } catch (err) {
+//         dispatch({
+//             type: RECIPE_ERROR,
+//             payload: { msg: err.response.statusText, status: err.response.status }
+//         });
+//     }
+// };
+
+
 
 // Add recipe
 export const addRecipe = (
@@ -55,7 +59,7 @@ export const addRecipe = (
     const res = await axios.post('/api/recipes', formData, config)
 
     dispatch({
-        type: GET_MY_RECIPES,
+        type: GET_RECIPES,
         payload: res.data
     });
 

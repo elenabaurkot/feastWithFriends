@@ -55,7 +55,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         <h1>
             <Link to= '/' className='noDec oLink'>
                 <h1 id='navHeader'>
-                    <i class="fas fa-pepper-hot"></i>&nbsp; 
+                    <i className="fas fa-pepper-hot"></i>&nbsp; 
                     Feastify
                 </h1>
             </Link>
