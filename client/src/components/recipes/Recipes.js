@@ -1,9 +1,5 @@
-import React, { Fragment, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Spinner from '../layout/Spinner'; 
-import RecipeItem from './RecipeItem';
-import { getProfiles } from '../../actions/profile';
+import React from 'react';
+
 
 const Recipes = props => {
     return (

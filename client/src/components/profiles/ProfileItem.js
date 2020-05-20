@@ -9,7 +9,9 @@ const ProfileItem = ({ profile: {
 }})=> {
     return (
         <div className="profile bg-light">
-            <img src="https://res.cloudinary.com/dsxuuory9/image/upload/v1589980680/random/propic_u5bzgx.jpg" alt="https://res.cloudinary.com/dsxuuory9/image/upload/v1589980680/random/propic_u5bzgx.jpg" className="round-img"/>
+            <img src="https://res.cloudinary.com/dsxuuory9/image/upload/v1589981524/random/propic_p4iyq1.png" 
+            alt='' 
+            className="rounded"/>
             <div>
                 <h2>{name}</h2>
                 <p>{location && <span>{location}</span>}</p>
