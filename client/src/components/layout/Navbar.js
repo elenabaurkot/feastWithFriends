@@ -11,14 +11,23 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     const authLinks = (
         <ul>
             <li>
+                <Link to='/profiles' className='noDec oLink navLink'>
+                    Recipes
+                </Link>
+            </li>
+            <li>
+                <Link to='/profiles' className='noDec oLink navLink'>
+                    Users
+                </Link>
+            </li>
+            <li>
                 <Link to='/dashboard' className='noDec oLink navLink'>
-                <i className='fas fa-user' />{' '}
+                {/* <i className='fas fa-user' />{' '} */}
                 <span className="hide-sm">Dashboard</span>
                 </Link>
             </li>
             <li>
                 <a onClick={logout} href='#!' className='noDec oLink navLink'>
-                <i className="fas fa-sign-out-alt"></i>{' '}
                 <span className="hide-sm">Logout</span>
                 </a>
             </li>
@@ -27,6 +36,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
     const guestLinks = (
         <ul>
+            <li>
+                <Link to='/profiles' className='noDec oLink navLink'>
+                    Recipes
+                </Link>
+            </li>
             <li>
             <Link to="/register" className='noDec oLink navLink'>Register</Link>
             </li>

@@ -3,6 +3,7 @@ import { setAlert } from './alert';
 
 import {
     GET_MY_RECIPES,
+    GET_RECIPES,
     RECIPE_ERROR
 } from './types';
 
@@ -13,6 +14,23 @@ export const getMyRecipeBook = () => async dispatch => {
 
         dispatch({
             type: GET_MY_RECIPES,
+            payload: res.data
+        })
+    } catch (err) {
+        dispatch({
+            type: RECIPE_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
+    }
+};
+
+// Get all profiles
+export const getRecipes = () => async dispatch => {
+    try {
+        const res = await axios.get('/api/recipes');
+
+        dispatch({
+            type: GET_RECIPES,
             payload: res.data
         })
     } catch (err) {
