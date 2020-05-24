@@ -7,7 +7,7 @@ const getMyRecipeBook = async (req, res) => {
     try {
       const recipes = await Recipes.find({
         user: req.user.id,
-      }).populate('user', ['name']);
+      }).populate('user', ['name']).sort({ date: -1 });
       // if no recipe book send error message
       if (!recipes) {
         return res.status(400).json({ msg: 'This user does not have any recipes yet' });

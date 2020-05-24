@@ -73,15 +73,15 @@ export const addRecipe = (
             }
         };
     const res = await axios.post('/api/recipes', formData, config)
-
-    dispatch({
-        type: GET_RECIPES,
-        payload: res.data
-    });
-
-    dispatch(setAlert('Recipe Added!', 'success'));
-        if(!edit) {
-        history.push('/dashboard');
-
+    try {
+        dispatch(setAlert('Recipe Added!', 'success'));
+            if(!edit) {
+            history.push('/dashboard');
+        }
+    } catch (err) {
+        dispatch({
+            type: RECIPES_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+        });
     }
 };
